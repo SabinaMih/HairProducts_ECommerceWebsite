@@ -1,0 +1,47 @@
+<!-- templates/signup.html -->
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="fluid-container m-5">
+<div class="row">
+    <div class="col">
+<div class="card h-100">
+    <div class="card-header font-weight-bold"><h1>Contact Us Form</h1></div>
+
+    {% if messages %}
+    <div class="card m-5 bg-dark text-white text-center p-5">
+        {% for message in messages %}
+            <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}<p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="card-body">
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn bg-dark text-white btn-sm" type="submit">Send</button>
+        <a class="btn bg-dark text-white btn-sm" href="{% url 'shop:allProductCategories' %}">Back</a>
+    </form>
+    </div>
+
+</div>
+</div>
+<div class="col">
+<div>
+    <div class="card h-100">
+        <div class="card-header font-weight-bold"><h1>Visit Our Shop</h1></div>
+
+    <div class="card-img mx-auto">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2383.3464725318845!2d-6.361627883979254!3d53.319149484448815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48670cbabb53e829%3A0xeb2a88b8afff9770!2sSalon%20Services!5e0!3m2!1sen!2sie!4v1607620666310!5m2!1sen!2sie" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="push"></div>
+
+</div>
+{% endblock content %}

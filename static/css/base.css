@@ -1,0 +1,265 @@
+/* css for carousel */
+.carousel-inner img {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    display: block;
+    
+}
+/****Navbar****/
+.nav-item {
+	letter-spacing: .2em;
+	font-size: 14px;
+	
+}
+.dropdown-item {
+	font-size: 14px;
+	letter-spacing: .2em;
+	
+}
+body {
+	font-family: 'Roboto', sans-serif;
+}
+
+/****Category page****/
+.my_row_class {
+	padding-top: 15px;
+}
+.my_row_class .mx-auto p {
+	color: #000;
+	font-size: 12px;
+}
+.my_row_class .mx-auto p a {
+	color: #000;
+	font-size: 12px;
+	text-decoration: none;
+}
+/****Category page****/
+.my_image {
+	width: 100%;
+	height: 300px;
+}
+.my_title {
+	font-size: 16px;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+}
+.my_image_padding {
+	padding-top: 5px;
+}
+
+
+.card-body h4 {
+	font-size: 14px;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+}
+/****Product Page****/
+.my_prod_row_class {
+	padding-top: 15px;
+	padding-bottom: 20px;
+}
+.my_prod_row_class .mx-auto p {
+	color: #000;
+	font-size: 12px;
+}
+.my_prod_row_class .mx-auto p a {
+	color: #000;
+	font-size: 12px;
+	text-decoration: none;
+}
+.my_prod_title {
+	font-size: 30px;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+	padding-top: 15px;
+	padding-bottom: 10px;
+}
+.my_prod_text {
+	padding-right: 20px;
+}
+
+/****Cart Page****/
+.my_custom_table {
+	min-width: 400px;
+	font-size: 14px;
+}
+.my_custom_thead {
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+	background-color: #f8f9fa!important;
+}
+.custom_image {
+	width: 100px;
+	height: 100px;
+}
+.custom_a {
+	text-decoration: none;
+}
+.custom_icon {
+	text-decoration: none;
+	color: #868e96 !important;
+}
+.my_custom_button {
+	margin-top: 5px;
+}
+/***Stripe Button***/
+.stripe-button-el {
+	width: 100% !important;
+	display: block !important;
+	background-color: #868e96 !important;
+	border: 0px !important;
+	background-image: none !important;
+}
+.stripe-button-el span {
+	display: block;
+	position: relative;
+	padding: 0px 12px;
+	height: 36px !important;
+	line-height: 36px !important;
+	font-family: 'Roboto', sans-serif !important;
+	font-size: 16px !important;
+	color: #fff !important;
+	background-image: none !important;
+	background: none !important;
+}
+
+.errorlist li {
+	color: red;
+	font-weight: bold;
+}
+
+.my_custom_div {
+	margin-bottom: 20px !important;
+}
+
+.my_custom_menu {
+	text-align: right !important;
+}
+.my_custom_menu ul li {
+	list-style: none;
+	color: #000;
+	letter-spacing: .2em;
+	font-size: 12px;
+	padding-right: 10px;
+	display: inline;
+}
+.my_custom_menu ul li a {
+	text-decoration: none;
+	color: #000;
+	list-style: none;
+	letter-spacing: .2em;
+	font-size: 12px;
+}
+
+.img-max{
+    max-width: 200px;
+    width:100%;
+}
+
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: #455A64;
+    padding-left: 0px;
+    margin-top: 30px
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 13px;
+    width: 33.33%;
+    float: left;
+    position: relative;
+    font-weight: 400;
+    color: #455A64 !important
+}
+
+#progressbar #step1:before {
+    content: "1";
+    color: #fff;
+    width: 29px;
+	margin-left: 15px !important;
+	padding-left: 10px;
+    
+}
+
+#progressbar #step2:before {
+    content: "2";
+    color: #fff;
+    width: 29px
+}
+
+#progressbar #step3:before {
+    content: "3";
+    color: #fff;
+    width: 29px;
+    margin-right: 15px !important;
+    padding-right: 11px !important
+}
+
+#progressbar li:before {
+    line-height: 29px;
+    display: block;
+    font-size: 12px;
+    background: #455A64;
+    border-radius: 50%;
+    margin: auto
+}
+
+#progressbar li:after {
+    content: '';
+    width: 121%;
+    height: 2px;
+    background: #455A64;
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 15px;
+    z-index: -1
+}
+
+#progressbar li:nth-child(2):after {
+    left: 50%
+}
+
+#progressbar li:nth-child(1):after {
+    left: 25%;
+    width: 121%
+}
+
+#progressbar li:nth-child(3):after {
+    left: 25% !important;
+    width: 50% !important
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: #4bb8a9
+}
+/****Radio buttons - Stars rating****/
+.star-rating{
+	direction: rtl;
+    display: inline-block;
+    padding: 20px;
+}
+.star-rating input[type=radio] {
+	display: none;
+  }
+
+.star-rating label {
+	color: #bbb;
+    font-size: 35px;
+    padding: 0;
+    cursor: pointer;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+  }
+    
+  .star-rating label:hover,
+  .star-rating label:hover ~ label,
+  .star-rating input[type=radio]:checked ~ label {
+	  color: #4e4e4e;
+  }
+  

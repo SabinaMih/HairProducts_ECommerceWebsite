@@ -1,0 +1,30 @@
+
+	<div class="my_custom_menu">
+		<ul>
+			{% if user.is_authenticated %}
+			<li>
+                Welcome, <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+                aria-haspopup="true" aria-expanded="false">{{ user.username }} 
+				<i class="fas fa-user-circle"></i></a>
+				<div class="dropdown-menu dropdown-menu-right">
+					<a href="{% url 'order:order_history' %}" class="dropdown-item">Order History</a>
+					<div class="dropdown-divider"></div>
+					  <a href="{% url 'password_change'%}" class="dropdown-item">Change password</a>
+					</div>
+			</li>
+			<li>
+				<a href="{% url 'accounts:signout' %}">Sign Out <i class="fas fa-sign-out-alt"></i></a>
+			</li>
+			{% else %}
+			<li>
+				<a href="{% url 'accounts:signup' %}">Sign Up <i class="fas fa-user-plus"></i></a>
+			</li>
+			<li>
+				<a href="{% url 'accounts:signin' %}">Sign In <i class="fas fa-sign-in-alt"></i></a>
+			</li>
+			{% endif %}
+		</ul>
+		
+	</div>
+
+

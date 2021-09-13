@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+{% block metadescription %}
+	{{ product.description|truncatewords:155 }}
+{% endblock %}
+{% block title %}
+	{{ product.name }} - Hair Products Online Shop
+{% endblock %}
+{% block content %}
+	<div class = "row my_prod_row_class">
+		<div class = "mx-auto">
+			<p><a href="{{ product.category.get_url }}">{{product.category}}</a> | {{product.name}}</p>
+		</div>
+		<div class = "container">
+			<br>
+			<div class = "row">
+				<div class = "col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+						<div class="img-max d-block">
+						<img class="img-fluid" src="{{product.image.url}}" alt="{{product.name}}">
+						</div>
+				</div>
+				<div class = "col-12 col-sm-12 col-md-12 col-lg-6">
+					<div>
+						<h1 class = "my_prod_title">{{product.name}}</h1>
+						<p>€{{product.price}}</p>
+						<p class = "my_title">Product Description</p>
+						<p class = "text-justify my_prod_text">{{product.description}}</p>
+						{% if product.stock == 0%}
+							<p class = "text-justify my_prod_text"><b>Out of Stock</b></p>
+						{% else %}
+							<a class = "btn btn-secondary" href="{% url 'cart:add_cart' product.id %}">Add to Cart</a>
+							<a class = "btn btn-secondary" href="{% url 'wishlist:add_wishlist' product.id %}">Add to wishlist</a>
+						{% endif %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card-footer m-5"><h1>Reviews | Rating</h1>
+		{% for review in product.review.all %}
+		  <div class="card m-2">
+		  <div class="card-header">
+		  <span class="font-weight-bold">{{ review.author }}</span>
+		  <span class="text-muted"> | {{ review.created_date }}</span></div>
+		  <div class="card-body">{{ review.text }}</div>
+		  <div class="card-body">
+			{% if review.photo %}
+				<div class="img-max d-block">
+				  <img class="img-fluid" src="{{review.photo.url}}" alt="{{ review.author }}">
+				</div>
+			  {% endif %}
+		  
+		  <div class="review-rating pull-right mb-5">
+			<i class="fa fa-star"{% if rs.rate < 1 %}-o empty{% endif %}></i>
+			<i class="fa fa-star"{% if rs.rate < 2 %}-o empty{% endif %}></i>
+			<i class="fa fa-star"{% if rs.rate < 3 %}-o empty{% endif %}></i>
+			<i class="fa fa-star"{% if rs.rate < 4 %}-o empty{% endif %}></i>
+			<i class="fa fa-star"{% if rs.rate < 5 %}-o empty{% endif %}></i>
+		</div>
+		  </div>
+		</div>
+		{% empty %}
+		  <p>No reviews</p>
+		{% endfor %}
+		{% if user.is_authenticated %}
+			<a class="btn bg-dark text-white btn-sm ml-3" href="{% url 'shop:add_review_to_product' product.pk %}">Add review</a>
+		{% else %}
+			<a class="btn bg-dark text-white btn-sm disabled" href="{% url 'shop:add_review_to_product' product.pk %}">Add review</a>
+		{% endif %}
+	</div>
+{% endblock %}

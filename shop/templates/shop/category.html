@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% load static %}
+{% block metadescription %}
+	{% if category %}
+		{{ category.description|truncatewords:155 }}
+	{% else %}
+		Welcome
+	{% endif %}
+{% endblock %}			
+{% block title %}
+	{% if category %}
+		{{ category.name }} - Hair Product Shop
+	{% else %}
+		See Our Hair Product Collection
+	{% endif %}
+{% endblock %}
+{% block content %}
+
+<!--Breadcrumb navigation-->
+	{% if category %}
+	<div class="row my_row_class">
+		<div class="mx-auto">
+			<p><a href="{% url 'shop:allProductCategories' %}">Our Product Collection</a> | {{category.name}}</p>
+		</div>
+	</div>
+	{% endif %}
+	<div class="mx-auto">
+		{% if category %}
+		<img class="my_image" src="{{category.image.url}}" alt="{{category.name}}">
+	</div>
+	<br>
+	<div>
+		<h1 class="text-center my_title">{{category.name}}</h1>
+		<hr>
+		<br>
+		<p class="text-center">{{category.description}}</p>
+		<br>
+	</div>
+	{% else %}
+	<div class="row mx-auto bg-danger text-white text-center pl-5"><h3>CHRISTMAS SALE 30% OFF EVERYTHING APPLY VOUCHER "VA1090225" AT CHECKOUT END ON 1 JAN 2021</h3></div>
+	<!-- Carousel Created using w3school tutorials-->
+<div id="number" class="carousel slide" data-ride="carousel">
+
+	<!-- Indicators -->
+	<ul class="carousel-indicators">
+	  <li data-target="#number" data-slide-to="0" class="active"></li>
+	  <li data-target="#number" data-slide-to="1"></li>
+	  <li data-target="#number" data-slide-to="2"></li>
+	  <li data-target="#number" data-slide-to="3"></li>
+	</ul>
+	
+	<!-- The slideshow -->
+	<div class="carousel-inner">
+	  <div class="carousel-item active">
+		<img src="{% static 'images/cimg1.jpg'%}" alt="hair Img" width="100%" height="400">
+		<div class="carousel-caption">
+		  <h1>HAIR EXTENSIONS</h1>
+		  <p>Find the extensions that suits you best!</p>
+		  <a class="stretched-link" href="http://127.0.0.1:8000/88a789de-52db-4a0e-81b0-1838e867f4a9/"></a>
+		</div>
+		</div>
+	  <div class="carousel-item">
+		<img src="{% static 'images/ca2img.jpg' %}" alt="hairImg2" width="100%" height="400">
+		<div class="carousel-caption">
+			<h1>CARE & STYLING</h1>
+			<a class="stretched-link" href="http://127.0.0.1:8000/e66ebb8e-1e8f-453e-8678-e78e26183ded/"></a>
+			<p></p>
+		</div>
+	  </div>
+	  <div class="carousel-item">
+		<img src="{% static 'images/cimg3.jpg' %}" alt="" width="100%" height="400">
+		<div class="carousel-caption">
+		  <h1>HAIR ELECTRICALS</h1>
+		</br>
+		  <a class="stretched-link" href="http://127.0.0.1:8000/233613f2-9551-4b38-b775-602775c1b265/"></a>
+		</div>
+	  </div>
+	  <div class="carousel-item">
+		
+		<img src="{% static 'images/cimg4.jpg' %}" alt="" width="100%" height="400">
+		<div class="carousel-caption">
+			<div class="carousel-caption">
+				<h1>COLOUR & BLEACH</h1>
+				<a class="stretched-link" href="http://127.0.0.1:8000/204c5352-256c-4f88-81ef-5435c8b5e7d0/"></a>
+				<p></p>
+			</div>
+		</div>
+	  </div>
+	</div>
+
+	<!-- Left and right buttons -->
+	<a class="carousel-control-prev" href="#number" data-slide="prev">
+	  <span class="carousel-control-prev-icon"></span>
+	</a>
+	<a class="carousel-control-next" href="#number" data-slide="next">
+	  <span class="carousel-control-next-icon"></span>
+	</a>
+  </div>
+
+
+  	<div class="row mx-auto mt-3">
+		{% for cat in links %}
+		<div class="col-sm-3 mx-auto ">
+		 <div class="card-body  text-center ">
+			  <a class="display-5 text-center text-dark font-weight-bold stretched-link" href="{{cat.get_absolute_url}}">{{cat.name}}</a>
+			  {% if cat.name == 'Care & Styling'%}
+			  <div class="card p-2 bg-danger text-white">25% OFF<br>Apply Voucher "VCS101022" at checkout<br>Expires on 13 Jan 2021</div>
+			  {% elif cat.name == 'Colour & Bleach'%}
+			  <div class="card p-2 bg-danger text-white">30% OFF<br>Apply Voucher"VCB102023" at checkout<br>Expires on 12 Jan 2021</div>
+			  {% elif cat.name == 'Hair Electricals'%}
+			  <div class="card p-2 bg-danger text-white">15% OFF<br>Apply Voucher "VEH101034" at checkout<br>Expires on 06 Jan 2021</div>
+			  {% elif cat.name == 'Hair Extensions'%}
+			  <div class="card p-2 bg-danger text-white">20% OFF<br>Apply Voucher "VHE101022" at checkout<br>Expires on 13 Jan 2021</div>
+			  {% endif %}
+			
+		 </div>
+		</div>
+
+	{% endfor %}
+</div>
+</div>
+	<br>
+	<div class="container">
+		<hr>
+		<h1 class="text-center">Best Sellers</h1>
+		<hr>
+	
+
+	{% endif %}
+
+		<div class="row mx-auto">
+			{% for product in products.object_list %}
+			<div class="col-9 col-lg-4 col-sm-12 col-md-4 mb-3 ">
+				<div class="card text-center h-100">
+					<a href="{{product.get_absolute_url}}"><img class="card-img-top my_image" src="{{product.image.url}}" alt="{{product.name}}"></a>
+					<div class="card-body ">
+						<p class="font-weight-bold">{{product.name}}</p>
+					<hr>
+					<a class = "stretched-link" href="{{product.get_absolute_url}}"></a>
+					<p>€{{product.price}}</p><a class="btn bg-dark text-white btn-sm" href="{{ product.category.get_url }}">Buy</a>
+					</div>
+					
+				
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		<div class="mx-auto">
+			{% if products.paginator.num_pages > 1 %}
+				<hr>
+				<div class="text-center">
+					{% for pg in products.paginator.page_range %}
+						<a href="?page={{pg}}" class="btn btn-light btn-sm
+							{% if products.number == pg %}active{% endif %}">{{pg}}
+						</a>
+					{% endfor %}
+				</div>
+			{% endif %}
+		</div>
+		<br>
+		
+</div>
+	{% endblock %}

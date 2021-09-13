@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="icon-bar">
+    <a class="active" href="{% url 'shop:allProductCategories' %}"><i class="fa fa-home" style="color: black"></i></a></div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Shop
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'shop:allProductCategories' %}">All Products</a>
+              {% for cat in links %}
+              <a class="dropdown-item" href="{{cat.get_absolute_url}}">{{cat.name}}</a>
+              {% endfor %}
+            </div>
+          </li>
+          <li><a class="nav-link" href="{% url 'accounts:contactUs' %}">Contact Us</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+        {% if item_count > 0 %}
+        <li>
+          <a class="nav-link" href="{% url 'cart:cart_detail' %}">Cart<i class = "fas fa-shopping-cart"></i>({{item_count}})</a>
+          </li>
+        {% endif %}
+        {% if item_countw > 0 %}
+        <li>
+          <a class="nav-link" href="{% url 'wishlist:wishlist_detail' %}">Wishlist<i class = "fas fa-heart"></i>({{item_countw}})</a>
+          </li>
+          {% endif %}
+          </ul>
+     
+    </div>
+</nav>
+
+
